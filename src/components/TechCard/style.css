@@ -1,0 +1,49 @@
+.tech-card {
+    position: relative;
+    will-change: background, transform;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 5px;
+
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.tech-card-actions {
+    background-color: rgba(22, 22, 22, 0.1);
+    padding: 0.5rem;
+
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    display: flex;
+    gap: 1rem
+}
+
+.tech-card:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(109, 80, 25, 0.2);
+}
+
+.tech-card .title {
+    font-size: 3rem;
+}
+
+.tech-card.in-progress {
+    --accent-clr: #ebac378e;
+    background: linear-gradient(to right, var(--accent-clr), #ebac3728);
+}
+
+.tech-card.cancelled {
+    background: linear-gradient(to right, #eb37378e, #eb373728);
+}
+
+.tech-card.not-started {
+    background: linear-gradient(to right, #afafaf8e, #e6e6e628);
+}
+
+.tech-card.completed {
+    background: linear-gradient(to right, #61eb378e, #46eb3728);
+}
