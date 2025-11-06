@@ -2,6 +2,7 @@ import { FilterStatus, Status, Tech } from "../../types";
 import { getNextStatus } from "../../utils/status";
 import { getTechnologiesByValue, sortById } from "../../utils/tech";
 import TechCard from "../TechCard/TechCard";
+import "./style.css";
 
 export default function TechList({
   technologies,
@@ -21,22 +22,24 @@ export default function TechList({
       <span className="found-count">
         Результаты: {filteredTechnologies.length}
       </span>
-      {filteredTechnologies.map((t) => (
-        <TechCard
-          setStatus={(id: string) => {
-            const tech = technologies.filter((t) => t.id === id)[0];
-            tech.status = getNextStatus(tech.status);
-            setTechnologies(
-              sortById([...technologies.filter((t) => t.id !== id), tech])
-            );
-          }}
-          id={t.id}
-          key={t.id}
-          title={t.title}
-          description={t.description}
-          status={t.status}
-        />
-      ))}
+      <div className="technologies">
+        {filteredTechnologies.map((t) => (
+          <TechCard
+            setStatus={(id: string) => {
+              const tech = technologies.filter((t) => t.id === id)[0];
+              tech.status = getNextStatus(tech.status);
+              setTechnologies(
+                sortById([...technologies.filter((t) => t.id !== id), tech])
+              );
+            }}
+            id={t.id}
+            key={t.id}
+            title={t.title}
+            description={t.description}
+            status={t.status}
+          />
+        ))}
+      </div>
     </div>
   );
 }

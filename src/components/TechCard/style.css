@@ -21,6 +21,12 @@
     gap: 1rem
 }
 
+.action {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgb(139, 81, 42);
+}
+
 .tech-card:hover {
     cursor: pointer;
     transform: translateY(-2px);

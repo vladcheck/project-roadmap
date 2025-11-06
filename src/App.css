@@ -10,6 +10,7 @@
 }
 
 #root {
+  padding: 1rem;
   font-size: 2rem;
   width: 100vw;
   min-height: 100vh;
@@ -24,7 +25,6 @@ header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  border: 2px solid black;
   border-radius: 10px;
 }
 
@@ -35,8 +35,10 @@ button {
 main {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 1rem;
-  width: clamp(200px, 50vw, 800px);
+  width: clamp(400px, 50vw, 1000px);
 }
 
 .tech-list {
