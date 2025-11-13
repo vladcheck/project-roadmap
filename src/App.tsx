@@ -52,39 +52,44 @@ export default function App() {
   return (
     <div id="root">
       <header>
-        <h1>Список технологий</h1>
-        <ProgressHeader
-          totalCount={technologies.length}
-          completedCount={
-            getTechnologiesByValue(technologies, "status", "completed").length
-          }
-        />
-        <Statistics
-          stats={{
-            cancelled: getTechnologiesByValue<Status>(
-              technologies,
-              "status",
-              "cancelled"
-            ).length,
-            inProgress: getTechnologiesByValue<Status>(
-              technologies,
-              "status",
-              "in-progress"
-            ).length,
-            completed: getTechnologiesByValue<Status>(
-              technologies,
-              "status",
-              "completed"
-            ).length,
-            notStarted: getTechnologiesByValue<Status>(
-              technologies,
-              "status",
-              "not-started"
-            ).length,
-          }}
-        />
+        <h1>
+          Roadmapper<sup style={{ fontSize: "8px" }}>TM</sup>
+        </h1>
+        <div>
+          <h2>Статистика</h2>
+          <ProgressHeader
+            totalCount={technologies.length}
+            completedCount={
+              getTechnologiesByValue(technologies, "status", "completed").length
+            }
+          />
+          <Statistics
+            stats={{
+              cancelled: getTechnologiesByValue<Status>(
+                technologies,
+                "status",
+                "cancelled"
+              ).length,
+              inProgress: getTechnologiesByValue<Status>(
+                technologies,
+                "status",
+                "in-progress"
+              ).length,
+              completed: getTechnologiesByValue<Status>(
+                technologies,
+                "status",
+                "completed"
+              ).length,
+              notStarted: getTechnologiesByValue<Status>(
+                technologies,
+                "status",
+                "not-started"
+              ).length,
+            }}
+          />
+        </div>
       </header>
-      <main>
+      <aside>
         <QuickActions
           setAllToCompleted={() => {
             const completedTechnologies: Tech[] = technologies.map((t) => {
@@ -114,7 +119,8 @@ export default function App() {
           }}
         />
         <TechFilterPanel filters={filters} setFilters={setFilters} />
-
+      </aside>
+      <main>
         <TechList
           technologies={technologies}
           setTechnologies={setTechnologies}

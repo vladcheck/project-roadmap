@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import "./Button.css";
 
 export default function Button(
   props: React.ButtonHTMLAttributes<HTMLButtonElement> & {
