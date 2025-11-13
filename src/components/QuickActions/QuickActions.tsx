@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import "./style.css";
 
 export default function QuickActions({
@@ -15,14 +16,16 @@ export default function QuickActions({
     <div className="quick-actions-section">
       <h2>Быстрые действия</h2>
       <div className="quick-actions">
-        <button onClick={setAllToCompleted}>
-          Отметить все как выполненные
-        </button>
-        <button onClick={resetAll}>Сбросить все статусы</button>
-        <button onClick={setRandomTechToInProgress}>
-          Случайный выбор следующей технологии
-        </button>
-        <button onClick={exportTechnologies}>Экспортировать</button>
+        <Button
+          onClick={setAllToCompleted}
+          text="Отметить все как выполненные"
+        />
+        <Button onClick={resetAll} text="Сбросить все статусы" />
+        <Button
+          onClick={setRandomTechToInProgress}
+          text="Случайный выбор следующей технологии"
+        />
+        <Button onClick={exportTechnologies} text="Экспортировать" />
       </div>
     </div>
   );

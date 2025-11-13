@@ -1,5 +1,6 @@
 import "Modal.css";
 import { PropsWithChildren } from "react";
+import Button from "../Button/Button";
 
 export default function Modal({
   isOpen,
@@ -29,9 +30,7 @@ export default function Modal({
         {/* Шапка модалки с заголовком и кнопкой закрытия */}
         <div className="modal-header">
           <h2>{title}</h2>
-          <button className="close-button" onClick={onClose}>
-            ×
-          </button>
+          <Button className="close-button" onClick={onClose} text="*" />
         </div>
 
         {/* Основное содержимое модалки */}

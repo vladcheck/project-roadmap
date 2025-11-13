@@ -1,3 +1,4 @@
+import Button from "../Button/Button";
 import { FiltersProps } from "./types";
 
 export default function StatusFilters({ filters, setFilters }: FiltersProps) {
@@ -5,25 +6,26 @@ export default function StatusFilters({ filters, setFilters }: FiltersProps) {
     <div className="status-filters">
       <h2>Показать технологии по статусу</h2>
       <div className="row">
-        <button onClick={() => setFilters({ ...filters, status: undefined })}>
-          Все
-        </button>
-        <button
+        <Button
+          onClick={() => setFilters({ ...filters, status: undefined })}
+          text="Все"
+        />
+        <Button
           onClick={() => setFilters({ ...filters, status: "not-started" })}
-        >
-          Не начатые
-        </button>
-        <button
+          text="Не начатые"
+        />
+        <Button
           onClick={() => setFilters({ ...filters, status: "in-progress" })}
-        >
-          В процессе изучения
-        </button>
-        <button onClick={() => setFilters({ ...filters, status: "completed" })}>
-          Изученные
-        </button>
-        <button onClick={() => setFilters({ ...filters, status: "cancelled" })}>
-          Отмененные
-        </button>
+          text=" В процессе изучения"
+        />
+        <Button
+          onClick={() => setFilters({ ...filters, status: "completed" })}
+          text="Изученные"
+        />
+        <Button
+          onClick={() => setFilters({ ...filters, status: "cancelled" })}
+          text="Отмененные"
+        />
       </div>
     </div>
   );
