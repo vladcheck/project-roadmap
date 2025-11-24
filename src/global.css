@@ -51,3 +51,6 @@ ol {
 button {
     font-size: 1rem;
 }
+*:disabled:hover {
+    cursor: not-allowed
+}
