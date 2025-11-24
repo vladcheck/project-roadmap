@@ -12,6 +12,7 @@ import {
 import useLocalStorage from "./hooks/useLocalStorage";
 import { techMock } from "./mock";
 import { TechnologyContext } from "./context/technologyContext";
+import NotFound from "./pages/NotFound/NotFound";
 
 export default function App() {
   const [technologies, setTechnologies] = useLocalStorage(
@@ -21,23 +22,7 @@ export default function App() {
 
   return (
     <TechnologyContext.Provider value={{ technologies, setTechnologies }}>
-      <ErrorBoundary
-        fallback={
-          <main
-            style={{
-              width: "100vw",
-              maxHeight: "100vh",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h1>Ой! Что-то сломалось :/</h1>
-            <Navigation />
-          </main>
-        }
-      >
+      <ErrorBoundary fallback={<NotFound />}>
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
