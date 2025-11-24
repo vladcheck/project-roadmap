@@ -1,6 +1,5 @@
 import { ErrorBoundary } from "react-error-boundary";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Navigation from "./components/Navigation/Navigation";
 import Layout from "./layout/Layout";
 import {
   HomePage,
