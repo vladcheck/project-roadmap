@@ -28,7 +28,7 @@ export default function TechList({
   filters,
 }: {
   technologies: Tech[];
-  setTechnologies: (arg0: Tech[]) => void;
+  setTechnologies: (...args: any) => void;
   filters: TechFilters;
 }) {
   const filteredTechnologies = getTechnologiesByFilters(technologies, filters);

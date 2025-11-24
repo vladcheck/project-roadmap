@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import "./App.css";
-import { exportTechnologies, getTechnologiesByStatus } from "./utils/tech";
-import Statistics from "./components/Statistics/Statistics";
-import QuickActions from "./components/QuickActions/QuickActions";
-import { Tech, TechFilters } from "./types";
-import TechList from "./components/TechList/TechList";
-import TechFilterPanel from "./components/TechFilterPanel/TechFilterPanel";
-import useLocalStorage from "./hooks/useLocalStorage";
-import useTechnologies from "./hooks/useTechnologies";
+import QuickActions from "../components/QuickActions/QuickActions";
+import Statistics from "../components/Statistics/Statistics";
+import TechFilterPanel from "../components/TechFilterPanel/TechFilterPanel";
+import TechList from "../components/TechList/TechList";
+import useLocalStorage from "../hooks/useLocalStorage";
+import useTechnologies from "../hooks/useTechnologies";
+import { TechFilters, Tech } from "../types";
+import { getTechnologiesByStatus, exportTechnologies } from "../utils/tech";
+import "./HomePage.css";
 
-export const TECHNOLOGIES_KEY = "technologies";
+const TECHNOLOGIES_KEY = "technologies";
 
-export default function App() {
+export default function HomePage() {
   const { technologies, setTechnologies, updateStatus, progress } =
     useTechnologies();
 

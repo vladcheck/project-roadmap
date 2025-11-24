@@ -12,9 +12,9 @@
     "gh:deploy": "pnpm gh:predeploy && gh-pages -d dist"
   },
   "dependencies": {
-    "@tanstack/react-router": "^1.139.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.6",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
