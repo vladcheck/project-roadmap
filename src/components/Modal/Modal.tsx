@@ -1,15 +1,38 @@
-import Button from "../Button/Button";
+import { PropsWithChildren } from "react";
+import "./Modal.css";
 
-export default function Modal() {
+export default function Modal({
+  isOpen,
+  onClose,
+  title,
+  children,
+}: PropsWithChildren & {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+}) {
+  if (!isOpen) {
+    return null;
+  }
+
+  const handleBackgroundClick = (e: any) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
   return (
-    <dialog className="modal-window">
-      <div className="modal-header">
-        <h2>Редактировать</h2>
-      </div>
+    <div className="modal-background" onClick={handleBackgroundClick}>
+      <div className="modal-window">
+        <div className="modal-header">
+          <h2>{title}</h2>
+          <button className="close-button" onClick={onClose}>
+            ×
+          </button>
+        </div>
 
-      <div className="modal-content">
-        <Button className="close-button" title="*" />
+        <div className="modal-content">{children}</div>
       </div>
-    </dialog>
+    </div>
   );
 }
