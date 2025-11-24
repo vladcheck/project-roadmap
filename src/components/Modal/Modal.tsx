@@ -1,4 +1,4 @@
-import "Modal.css";
+import "./Modal.css";
 import { PropsWithChildren } from "react";
 import Button from "../Button/Button";
 
@@ -12,7 +12,6 @@ export default function Modal({
   onClose: (...arg0: unknown[]) => void;
   title: string;
 }) {
-  // Если модалка закрыта - не показываем ничего
   if (!isOpen) {
     return null;
   }
@@ -27,14 +26,14 @@ export default function Modal({
       }}
     >
       <div className="modal-window">
-        {/* Шапка модалки с заголовком и кнопкой закрытия */}
         <div className="modal-header">
           <h2>{title}</h2>
-          <Button className="close-button" onClick={onClose} text="*" />
         </div>
 
-        {/* Основное содержимое модалки */}
-        <div className="modal-content">{children}</div>
+        <div className="modal-content">
+          {children}
+          <Button className="close-button" onClick={onClose} text="*" />
+        </div>
       </div>
     </div>
   );

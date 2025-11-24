@@ -37,6 +37,8 @@ export default function TechList({
 }) {
   const filteredTechnologies = getTechnologiesByFilters(technologies, filters);
 
+  console.log(technologies);
+
   return (
     <div className="tech-list">
       <span className="found-count">

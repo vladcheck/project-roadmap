@@ -12,10 +12,37 @@ import { techMock } from "./mock";
 
 const TECHNOLOGIES_KEY = "technologies";
 
+function validateTechnologiesInStorage(): Tech[] {
+  try {
+    const stored = localStorage.getItem(TECHNOLOGIES_KEY);
+    if (!stored) return techMock;
+
+    const parsed = JSON.parse(stored) as Tech[];
+    const mockIds = new Set(techMock.map((t) => t.id));
+    const hasAllMockIds =
+      parsed.length === techMock.length &&
+      parsed.every((t) => mockIds.has(t.id));
+
+    if (!hasAllMockIds) {
+      console.warn(
+        "ID из localStorage не совпадают, беру ID из исходного объекта.",
+      );
+      localStorage.removeItem(TECHNOLOGIES_KEY);
+      return techMock;
+    }
+
+    return parsed;
+  } catch (error) {
+    console.error("Ошибка валидации:", error);
+    localStorage.removeItem(TECHNOLOGIES_KEY);
+    return techMock;
+  }
+}
+
 export default function App() {
   const [technologies, setTechnologies] = useLocalStorage<Tech[]>(
     "technologies",
-    techMock
+    validateTechnologiesInStorage(),
   );
 
   const [filters, setFilters] = useLocalStorage<TechFilters>("filters", {});

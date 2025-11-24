@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Status, Tech } from "../../types";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
+import Modal from "../Modal/Modal";
 import "./style.css";
 
-const t: { [key: string]: string } = {
+const t: Record<Status, string> = {
   completed: "Изучена",
   cancelled: "Не будет изучена",
   "in-progress": "Изучается",
@@ -24,10 +26,21 @@ export default function TechCard({
 }: Tech & {
   setStatus: (id: string) => void;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div aria-label="Технология" className={`tech-card ${status}`}>
       <div className="tech-card-actions">
         <Button
+          onClick={() => (
+            <Modal
+              title="Редактирование"
+              isOpen={isOpen}
+              onClose={() => {
+                setIsOpen(false);
+              }}
+            />
+          )}
           role="button"
           aria-label="Редактировать технологию"
           className="edit-tech-button action"

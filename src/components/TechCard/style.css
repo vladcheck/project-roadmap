@@ -1,4 +1,5 @@
 .tech-card {
+    --accent-clr: #ebac378e;
     position: relative;
     will-change: background, transform;
     display: flex;
@@ -37,7 +38,6 @@
 }
 
 .tech-card.in-progress {
-    --accent-clr: #ebac378e;
     background: linear-gradient(to right, var(--accent-clr), #ebac3728);
 }
 
