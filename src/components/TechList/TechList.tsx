@@ -1,3 +1,4 @@
+import useTechnologies from "../../hooks/useTechnologies";
 import { Tech, TechFilters } from "../../types";
 import { getNextStatus } from "../../utils/status";
 import { getTechnologiesByValue, sortById } from "../../utils/tech";
@@ -22,15 +23,8 @@ function getTechnologiesByFilters(
   return results;
 }
 
-export default function TechList({
-  technologies,
-  setTechnologies,
-  filters,
-}: {
-  technologies: Tech[];
-  setTechnologies: (...args: any) => void;
-  filters: TechFilters;
-}) {
+export default function TechList({ filters }: { filters: TechFilters }) {
+  const { technologies, setTechnologies } = useTechnologies();
   const filteredTechnologies = getTechnologiesByFilters(technologies, filters);
 
   const onNotesChange = (techId: string, newNote: string) => {

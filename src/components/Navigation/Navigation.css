@@ -1,9 +1,9 @@
 .main-navigation {
-    padding: 1rem;
+    padding: 20px;
 }
 
 .nav-menu {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 20px;
 }

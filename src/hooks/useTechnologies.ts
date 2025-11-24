@@ -1,12 +1,22 @@
-import { techMock } from "../mock";
+import { useContext } from "react";
 import { getNextStatus } from "../utils/status";
-import useLocalStorage from "./useLocalStorage";
+import { TechnologyContext } from "../context/technologyContext";
+import { Tech } from "../types";
 
 export default function useTechnologies() {
-  const [technologies, setTechnologies] = useLocalStorage(
-    "technologies",
-    techMock,
-  );
+  const { technologies, setTechnologies } = useContext(TechnologyContext);
+
+  const addTechnology = (t: Tech | Tech[]) => {
+    if (Array.isArray(t)) {
+      setTechnologies([...technologies, ...t]);
+    } else {
+      setTechnologies([...technologies, t]);
+    }
+  };
+
+  const removeTechnology = (techId: string) => {
+    setTechnologies([...technologies.filter((t) => t.id !== techId)]);
+  };
 
   // Функция для обновления статуса технологии
   const updateStatus = (techId: string) => {
@@ -28,6 +38,8 @@ export default function useTechnologies() {
 
   return {
     technologies,
+    removeTechnology,
+    addTechnology,
     setTechnologies,
     updateStatus,
     progress: calculateProgress(),

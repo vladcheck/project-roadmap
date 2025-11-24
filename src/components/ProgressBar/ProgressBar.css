@@ -1,7 +1,7 @@
 .progress-bar-container {
     display: flex;
     min-width: 200px;
-    height: 2rem;
+    height: 40px;
     justify-content: center;
         align-items: center;
 
@@ -22,6 +22,6 @@
     background-image: linear-gradient(left, var(--accent-clr), rgb(177, 121, 48));
     background-size: 100% 100%;
 
-    height: 2rem;
+    height: 100%;
     border-radius: 10px,
 }

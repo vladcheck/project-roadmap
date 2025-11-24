@@ -1,16 +1,19 @@
-.tech-list {
+.user-settings {
     padding: 20px;
-        min-width: 200px;
-        max-width: 2000px;
+
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
 }
-.technologies {
+
+.row {
+    max-width: 1000px;
+}
+
+.current-settings {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 20px;
-
-    max-height: 80vh;
-    overflow-y: auto;
 }

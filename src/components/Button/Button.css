@@ -1,6 +1,4 @@
 button {
-    min-width: 40px;
-    min-height: 24px;
     background: none;
     background-color: rgba(235, 195, 83, 0.7);
     border-radius: 10px;
@@ -9,6 +7,11 @@ button {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+button:has(img.icon) {
+    min-width: 36px;
+    min-height: 36px;
+    padding: 2px
+}
 button:hover {
     background-color: rgba(235, 195, 83, 0.4);
     cursor: pointer;

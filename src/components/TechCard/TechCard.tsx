@@ -1,18 +1,13 @@
+import useTechnologies from "../../hooks/useTechnologies";
 import { Status, Tech } from "../../types";
+import translate from "../../utils/i18n";
 import Button from "../Button/Button";
 import Icon from "../Icon/Icon";
 import TechNotes from "../TechNotes/TechNotes";
 import "./style.css";
 
-const t: Record<Status, string> = {
-  completed: "Изучена",
-  cancelled: "Не будет изучена",
-  "in-progress": "Изучается",
-  "not-started": "Не начата",
-};
-
 function translateStatus(status: Status): string {
-  return t[status] ?? status;
+  return translate(status) ?? status;
 }
 
 export default function TechCard({
@@ -24,10 +19,15 @@ export default function TechCard({
   onNotesChange: (...args: any[]) => void;
   setStatus: (id: string) => void;
 }) {
+  const { removeTechnology } = useTechnologies();
+
   return (
     <div aria-label="Технология" className={`tech-card ${data.status}`}>
       <div className="tech-card-actions">
         <Button
+          onClick={() => {
+            removeTechnology(data.id);
+          }}
           role="button"
           aria-label="Удалить технологию"
           className="delete-tech-button action"
@@ -37,14 +37,7 @@ export default function TechCard({
           }
         />
       </div>
-      <div
-        className="tech-info"
-        onClick={(e) => {
-          if (e.target === e.currentTarget) {
-            setStatus(data.id);
-          }
-        }}
-      >
+      <div className="tech-info">
         <h6 className="title">{data.title}</h6>
         <p className="description">{data.description}</p>
         <span className="status">Статус: {translateStatus(data.status)}</span>
@@ -57,6 +50,14 @@ export default function TechCard({
           onNotesChange={onNotesChange}
           notes={data.notes}
         />
+        <button
+          className="switch-status button"
+          onClick={() => {
+            setStatus(data.id);
+          }}
+        >
+          Переключить статус
+        </button>
       </div>
     </div>
   );

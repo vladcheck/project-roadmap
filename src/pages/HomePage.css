@@ -9,15 +9,15 @@
 
 #root aside {
     grid-area: aside;
-    padding: 2rem;
+    padding: 20px;
     background-color: rgb(219, 142, 91, 0.5);
 
     display: flex;
     flex-direction: column;
-    gap: 2rem
+    gap: 20px
 }
 
 #root main {
     grid-area: main;
-    padding: 2rem;
+    padding: 20px;
 }

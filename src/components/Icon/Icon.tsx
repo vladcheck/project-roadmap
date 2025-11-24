@@ -11,7 +11,9 @@ export default function Icon({
 }) {
   return (
     <img
+      className="icon"
       role="icon"
+      style={{ objectFit: "contain" }}
       src={src}
       alt={alt}
       width={size + "px"}

@@ -8,13 +8,14 @@ import useTechnologies from "../hooks/useTechnologies";
 import { TechFilters, Tech } from "../types";
 import { getTechnologiesByStatus, exportTechnologies } from "../utils/tech";
 import "./HomePage.css";
+import { Link } from "react-router-dom";
+import Icon from "../components/Icon/Icon";
 
 const TECHNOLOGIES_KEY = "technologies";
 
 export default function HomePage() {
   const { technologies, setTechnologies, updateStatus, progress } =
     useTechnologies();
-
   const [filters, setFilters] = useLocalStorage<TechFilters>("filters", {});
 
   useEffect(() => {
@@ -47,7 +48,11 @@ export default function HomePage() {
             Roadmapper<sup style={{ fontSize: "8px" }}>TM</sup>
           </h1>
           <div>
-            <button></button>
+            <button>
+              <Link to="/settings">
+                <Icon src="/icons/icons8-cog-50.png" alt="Настройки" />
+              </Link>
+            </button>
           </div>
         </header>
         <Statistics
@@ -87,11 +92,7 @@ export default function HomePage() {
         <TechFilterPanel filters={filters} setFilters={setFilters} />
       </aside>
       <main>
-        <TechList
-          technologies={technologies}
-          setTechnologies={setTechnologies}
-          filters={filters}
-        />
+        <TechList filters={filters} />
       </main>
     </div>
   );
