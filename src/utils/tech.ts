@@ -12,3 +12,17 @@ export const getTechnologiesByValue = <T>(
 
 export const getTechnologiesByStatus = (technologies: Tech[], status: Status) =>
   technologies.filter((t) => t.status === status);
+
+export function exportTechnologies(technologies: Tech[]) {
+  const blob = new Blob([JSON.stringify(technologies, null, 2)], {
+    type: "json",
+  });
+  const urlForDownload = window.URL.createObjectURL(blob);
+  const linkElement = document.createElement("a");
+
+  linkElement.href = urlForDownload;
+  linkElement.download = "technologies.json";
+  linkElement.click();
+
+  URL.revokeObjectURL(urlForDownload);
+}

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import { getTechnologiesByStatus } from "./utils/tech";
+import { exportTechnologies, getTechnologiesByStatus } from "./utils/tech";
 import Statistics from "./components/Statistics/Statistics";
 import QuickActions from "./components/QuickActions/QuickActions";
 import { Tech, TechFilters } from "./types";
@@ -8,22 +8,10 @@ import TechList from "./components/TechList/TechList";
 import TechFilterPanel from "./components/TechFilterPanel/TechFilterPanel";
 import useLocalStorage from "./hooks/useLocalStorage";
 import { techMock } from "./mock";
+import { Link } from "@tanstack/react-router";
+import Icon from "./components/Icon/Icon";
 
 export const TECHNOLOGIES_KEY = "technologies";
-
-function exportTechnologies(technologies: Tech[]) {
-  const blob = new Blob([JSON.stringify(technologies, null, 2)], {
-    type: "json",
-  });
-  const urlForDownload = window.URL.createObjectURL(blob);
-  const linkElement = document.createElement("a");
-
-  linkElement.href = urlForDownload;
-  linkElement.download = "technologies.json";
-  linkElement.click();
-
-  URL.revokeObjectURL(urlForDownload);
-}
 
 export default function App() {
   const [technologies, setTechnologies] = useLocalStorage<Tech[]>(
@@ -65,9 +53,14 @@ export default function App() {
   return (
     <div id="root">
       <aside>
-        <h1>
-          Roadmapper<sup style={{ fontSize: "8px" }}>TM</sup>
-        </h1>
+        <header>
+          <h1>
+            Roadmapper<sup style={{ fontSize: "8px" }}>TM</sup>
+          </h1>
+          <div>
+            <button></button>
+          </div>
+        </header>
         <Statistics
           stats={{
             totalCount: technologies.length,

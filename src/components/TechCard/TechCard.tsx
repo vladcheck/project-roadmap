@@ -29,15 +29,6 @@ export default function TechCard({
       <div className="tech-card-actions">
         <Button
           role="button"
-          aria-label="Редактировать технологию"
-          className="edit-tech-button action"
-          title="Редактировать технологию"
-          icon={
-            <Icon src="/icons/icons8-crayon-48.webp" alt="edit" size={20} />
-          }
-        />
-        <Button
-          role="button"
           aria-label="Удалить технологию"
           className="delete-tech-button action"
           title="Удалить технологию"
