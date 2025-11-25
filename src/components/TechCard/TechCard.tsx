@@ -41,8 +41,8 @@ export default function TechCard({
         <h6 className="title">{data.title}</h6>
         <p className="description">{data.description}</p>
         <div className="status">Статус: {translateStatus(data.status)}</div>
-        {data.dueDate && (
-          <div className="due-date">Дедлайн: {data.dueDate}</div>
+        {data.deadline && (
+          <div className="deadline">Дедлайн: {data.deadline}</div>
         )}
         <TechNotes
           techId={data.id}

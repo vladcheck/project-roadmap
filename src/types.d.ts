@@ -17,7 +17,7 @@ export interface Tech {
   notes?: string;
   resources: string[];
   dependsOn?: Tech[];
-  deadline?: string;
+  deadline?: Date;
   category?: string;
   difficulty: Difficulty;
 }
