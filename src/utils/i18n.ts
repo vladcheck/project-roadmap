@@ -5,6 +5,7 @@ const translations: Record<string, string> = {
   "not-started": "Не начата",
   dark: "Темная",
   light: "Светлая",
+  auto: "Авто",
   trivial: "очень легко",
   easy: "легко",
   medium: "средне",
