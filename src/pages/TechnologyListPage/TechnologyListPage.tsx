@@ -11,7 +11,7 @@ import {
   importTechnologiesFromJSON,
 } from "../../utils/tech";
 import "./TechnologyListPage.css";
-import { Box, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 const TECHNOLOGIES_KEY = "technologies";
 
